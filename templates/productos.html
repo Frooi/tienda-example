@@ -1,0 +1,33 @@
+{% include 'componentes/cabeza.html' %}
+<main class="container flex-grow-1 py-4">
+    <div class="row justify-content-center">
+        {% if productos %}
+            {% for producto in productos %}
+            <div class="card p-2 m-3" style="width: 18rem;">
+                <img class="card-img-top img-fluid" style="width: 100%; height: 200px; object-fit: contain;" src="{{url_for('static',filename='imagenes/'+producto[4])}}" alt="{{producto[1]}}" title="{{producto[1]}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{producto[1]}}</h5>
+                    <p class="card-text"><code class="fw-bold">Categoría:</code> {{producto[2]}}</p>
+                    <p class="card-text"><code class="fw-bold">Precio:</code> ${{producto[3]}}</p>
+                    <button
+                        type="button"
+                        class="btn btn-primary btn-sm agregar-carrito"
+                        data-id="{{ producto[0] }}"
+                        data-nombre="{{ producto[1] }}"
+                        data-precio="{{ producto[3] }}"
+                    >
+                        <i class="bi bi-cart-plus"></i>
+                        Agregar al carrito
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-info">
+                No hay productos registrados.
+            </div>
+        {% endif %}
+    </div>
+</main>
+<script src="../static/js/control_carro.js"></script>
+{% include 'componentes/footer.html' %}

@@ -1,0 +1,27 @@
+{% include 'componentes/cabeza.html' %}
+<main class="container flex-grow-1 py-4">
+
+    <div class="container my-4">
+        <h3 class="text-center">Registrar producto</h3>
+        <div class="d-flex justify-content-center">
+        <form action="{{ url_for('registrar_producto') }}" method="POST" enctype="multipart/form-data" class="mb-5 p-4 rounded shadow" style="width: 720px; background: #f8f9fa;">
+            <div class="mb-2">
+                <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+            </div>
+            <div class="mb-2">
+                <input type="text" name="categoria" class="form-control" placeholder="Categoría" required>
+            </div>
+            <div class="mb-2">
+                <input type="number" name="precio" class="form-control" placeholder="Precio" required>
+            </div>
+            <div class="mb-2">
+                <input type="file" name="imagen" accept=".png, .jpg, .jpeg" class="form-control" required>
+            </div>
+            <div class="mb-2">
+                <textarea name="descripcion"  class="form-control" placeholder="Descripción" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-success w-100">Registrar</button>
+        </form>
+    </div>
+</main>
